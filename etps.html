@@ -1,0 +1,181 @@
+<!-- REPORTS -->
+
+<!-- v0.1 - Template 9/7 -->
+
+<html>
+<head>
+	<title>Landbank eTax Payment System | View Reports</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/styles.css">
+
+	<!-- BOOTSTRAP -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <script>
+    
+$("input[type='radio'][name='auth']").change(function(){
+    
+  var selected = $("input[type='radio'][name='auth']:checked").val();
+    
+    if(selected == "enroll") var opts = [
+        {name:"Taxpayers", val:""},
+        {name:"Authorized Users/Accounts", val:""},
+        {name:"Account Numbers", val:""},
+        {name:"Application Users", val:""}
+    ];
+
+    else if(selected == "trans") var opts = [
+        {name:"Confirmed Payment Instructions",val:""},
+        {name:"Acknowledged Payment Instructions",val:""},
+        {name:"Rejected Payment Instructions",val:""},
+        {name:"Scheduled Payment Instructions",val:""}
+      ];
+    
+    else var opts = [
+        {name:"Unlocked Front Office Users", val:""},
+    ];
+    
+    $("#authreport").empty();
+    
+    $.each(opts, function(k,v){
+        
+      $("#authreport").append("<option value='"+v.val+"'>"+v.name+"</option>");
+        
+    });
+});
+
+  </script> 
+
+</head>
+<body>
+  <header class="header_reg">
+    <div>
+      <img src="img/header.jpg" alt="logo" style="max-width: 1650px !important; width: 100% !important; height: 90% !important;">
+    </div>
+  </header>
+  <br><br><br><br>
+  
+
+	<div class="container">
+			<div class="topnav">
+  				<a href="uregistration.html">Registration</a>
+  				<a class="active" href="#">Reports/Logs</a>
+  				<a href="index.html">Account</a>
+  				<a style="float: right !important;" href="logout.html">Logout</a>
+			</div>
+	</div>
+
+
+	<br>
+	<div class="container">
+		<div class="row">
+
+		<div class="col-sm-3 vmenu">
+			<label>Reports/Logs</label>
+  			<a href="#reports.html">View Reports</a>
+  			<a href="transaction.html">View Transaction Logs</a>
+        <a href="#" class="active">Create ETPS Reports</a>
+
+		</div>
+
+		<div class="col-sm-9 div_reg">
+  			<span class="span_reg">
+    			Create ETPS Reports
+  			</span>
+  			<br>
+
+          <div class="form-group">
+            <span>Collection Date: <input class="col-sm-3 form-control" style="width: 50% !important; margin-right: 5% !important;" type="date" name="before"><button style="width: 50% !important; margin-right: 15% !important;"class="btn btn-success col-sm-3" type="button" >Download file from FTP</button></span>
+          </div>
+
+          <hr>
+
+  			<form class="form-horizontal">
+  				<div class="form-group">
+            <span>Subject: <input class="col-sm-6 form-control readonly" style="width: 100% !important; margin-right: 5% !important;" type="text" name="subject"></span>
+
+            <br>
+            <span>Period Time: from <input class="col-sm-3 form-control" style="width: 25% !important;"></span>
+    			</div>
+
+          <div class="radio form-group">
+            <label class="radio-inline">
+              <input type="radio" name="auth"  id="auth" value="enroll">Enrollment
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="auth"  id="auth" value="trans">Transactions
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="auth"  id="auth" value="acct">Accounts
+            </label>
+          </div>
+
+          <select class="dropdown" name="authreport" id="authreport">
+          </select>
+
+       <!--    <div class="form-group" name="auth0" id="auth0" style='display:none;'>
+            <span>Enrollment:
+            <select style="display: inline !important;" class="col-sm-4 form-control" name="auth1" onchange='authuseracct(this.value);'> 
+              <option value="red">Taxpayers</option>
+              <option value="useracct">Authorized Users/Accounts</option>
+              <option value="others">Account Numbers</option>
+              <option value="others">Application Users</option>
+            </select>
+          </span>
+        </div> -->
+
+          <!--   <input class="col-sm-3 form-control" type="text" name="auth" id="auth" style='display:none;'/> -->
+
+           <!--  <div name="auth1" id="auth1" style='display:none;'>
+            <label class="checkbox-inline">
+              <input type="checkbox" value="useracct">by User ID
+             </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" value="useracct">by Account
+            </label>
+          </div> -->
+
+          <div class="form-group" name="auth0" id="auth0" style='display:none;'>
+            <span value="trans">Transactions:
+            <select style="display: inline !important;" class="col-sm-4 form-control"> 
+              <option value="red">Confirmed Payment Instructions</option>
+              <option value="useracct">Acknowledged Payment Instructions</option>
+              <option value="others">Rejected Payment Instructions</option>
+              <option value="others">Scheduled Payment Instructions</option>
+            </select>
+          </span>
+        </div>
+
+            <span value="acct" class="form-group" name="auth0" id="auth0" style='display:none;'>Accounts:  
+            <label class="checkbox-inline">
+              <input type="checkbox" value=""> Unlocked Front Office Users
+             </label>
+           </span>
+
+            <input class="col-sm-3 form-control" type="text" name="auth" id="auth" style='display:none;'/>
+
+            <div name="auth" id="auth" style='display:none;'>
+            <label class="checkbox-inline">
+              <input type="checkbox" value="useracct">by User ID
+             </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" value="useracct">by Account
+            </label>
+          </div>
+    		</form>
+
+		</div>
+	</div>
+</div>
+
+<!-- <div class="main-container">
+  <footer>
+    <div>
+      <img src="img/footer.jpg" alt="footer" class="footer-logo">
+    </div>
+  </footer>
+  </div> -->
+
+</body>
+</html>

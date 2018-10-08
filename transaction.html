@@ -1,0 +1,158 @@
+<html>
+<!-- TRANSACTION LOGS -->
+
+<!-- v0.1 - Template 9/7 -->
+
+<head>
+	<title>Landbank eTax Payment System | View Transaction Logs</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- BOOTSTRAP -->
+	 <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+  <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+  <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+  <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+  <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+  <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/main 2.css">
+
+
+    <script type="text/javascript">
+    function disableInputAll() {
+      document.getElementById("transDate").disabled = true;
+      document.getElementById("transUserID").disabled = true;
+      document.getElementById("transAccNo").disabled = true;
+      document.getElementById("transActType").disabled = true;
+    }
+    function disableInputDate() {
+      document.getElementById("transDate").disabled = false;
+      document.getElementById("transUserID").disabled = true;
+      document.getElementById("transAccNo").disabled = true;
+      document.getElementById("transActType").disabled = true;
+    }
+    function disableInputUserID() {
+      document.getElementById("transDate").disabled = true;
+      document.getElementById("transUserID").disabled = false;
+      document.getElementById("transAccNo").disabled = true;
+      document.getElementById("transActType").disabled = true;
+    }
+    function disableInputAccNo() {
+      document.getElementById("transDate").disabled = true;
+      document.getElementById("transUserID").disabled = true;
+      document.getElementById("transAccNo").disabled = false;
+      document.getElementById("transActType").disabled = true;
+    }
+    function disableInputActType() {
+      document.getElementById("transDate").disabled = true;
+      document.getElementById("transUserID").disabled = true;
+      document.getElementById("transAccNo").disabled = true;
+      document.getElementById("transActType").disabled = false;
+    }
+
+    $( document ).ready(function() {
+     $('.leftmenutrigger').on('click', function(e) {
+     $('.side-nav').toggleClass("open");
+     //e.preventDefault();
+     e.stopPropagation();
+    return false;
+    });
+     $('*:not(.leftmenutrigger)').on('click', function() {
+    $('.side-nav').removeClass('open');
+    });
+});
+    </script>
+
+</head>
+<body>
+  <div id="wrapper" class="animate">
+    <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark bg-dark">
+      <span class="navbar-toggler-icon leftmenutrigger"></span>
+      <a class="navbar-brand" href="#"> <img src="images/logo.png" alt="logo" height="30px"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav animate side-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Registration
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Reports/Logs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Account</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+          <div class="card">
+                <div class="card-body">
+                  <div class="form-group">
+     <a href="#" id="enter" style="margin-right: 1% !important; text-decoration: none !important;"> > View Reports</a>
+      <a href="#" id="enter" style="margin-right: 1% !important; text-decoration: none !important;"> > View Transaction Logs</a>
+    </div>
+    </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">View Transaction Logs</h5>
+              <form action="#">
+                <div class="form-group">
+                  <label class="control control-radio"><input type="radio" name="radiogrp" value="all" onclick="disableInputAll()"> All<div class="control_indicator"></div></label>
+                </div>
+                <div class="form-group">
+                  <label class="control control-radio"><input style="display: inline-block !important;"  type="radio" name="radiogrp" value="date" onclick="disableInputDate()"> Date: <span class="control_indicator"></span></label>
+          <input style="display: inline-block !important;" class="form-control" type="date" id="transDate" name="before">
+                </div>
+                <div class="form-group">
+                    <label class="control control-radio"><input  type="radio" name="radiogrp" value="ui" onclick="disableInputUserID()"> User ID: <div class="control_indicator"></div></label>
+          <input style="display: inline-block !important;" class="form-control" type="text" placeholder="Enter User ID" name="#"  id="transUserID" required>
+                </div>
+                <div class="form-group">
+                <label class="control control-radio"><input  type="radio" name="radiogrp" value="actno" onclick="disableInputAccNo()"> Account Number: <div class="control_indicator"></div></label>
+          <input style="display: inline-block !important;" class="form-control" type="number" placeholder="Enter Account Number" id="transAccNo" pattern="^\d{4}-\d{4}-\d{2}$" name="#" required>
+                </div>
+                <div class="form-group">
+                <label class="control control-radio"><input  type="radio" name="radiogrp" value="actt" onclick="disableInputActType()"> Activity Type: <div class="control_indicator"></div></label>
+          <select style="display: inline-block !important;" name="transActType" id="transActType" class="form-control">
+            <option selected="selected" disabled>-- SELECT ONE --</option>
+          </select>
+                </div>
+            <span>
+                <button type="submit" class="btn btn-default">Search</button>
+                <button type="submit" class="btn btn-default">Cancel</button>
+            </span>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

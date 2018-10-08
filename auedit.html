@@ -1,0 +1,124 @@
+<!-- REGISTER APPLICATION -->
+
+<!-- v0.1 - Template 9/7 -->
+<!-- v0.2 - Edited header and footer 9/21 -->
+
+<html>
+
+<head>
+  <title>Landbank eTax Payment System | Application User Registration</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- BOOTSTRAP -->
+  <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+  <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+  <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+  <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+  <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+  <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/main 2.css">
+  <script>
+    $( document ).ready(function() {
+     $('.leftmenutrigger').on('click', function(e) {
+     $('.side-nav').toggleClass("open");
+     //e.preventDefault();
+     e.stopPropagation();
+    return false;
+    });
+     $('*:not(.leftmenutrigger)').on('click', function() {
+    $('.side-nav').removeClass('open');
+    });
+});
+    
+  </script>
+
+</head>
+
+<body>
+ 
+  <div id="wrapper" class="animate">
+    
+    <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-light bg-light">
+      <span class="navbar-toggler-icon leftmenutrigger"></span>
+      <a class="navbar-brand" href="#"> <img src="images/logo.png" alt="logo" height="30px"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav animate side-nav navbar-light bg-light">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Registration
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Reports/Logs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Account</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+      <div class="container-fluid">
+        <div class="card">
+          <center>
+          <h4>Application Role</h4>
+        </center>
+        </div>
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Edit New Application User</h5>
+              <form action="#">
+                <div class="form-group">
+                  <label for="user">User ID:</label>
+                    <input type="text" placeholder="Enter User ID" class="form-control" id="user" required>
+                </div>
+                <div class="form-group">
+                  <label for="name">Name of User:</label>
+                    <input type="text" placeholder="Enter Name of User" class="form-control" id="name" required readonly disabled>
+                </div>
+                <div class="form-group">
+                  <label for="role">User Role:</label>
+                    <select class="form-control" id="role" required>
+                      <option>Select User Role</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                    </select>
+                </div>
+            <span>
+                <button type="submit" class="btn btn-dark">Apply Changes</button>
+                <button type="submit" class="btn btn-warning">Reset Password</button><br><br>
+                <button type="submit" class="btn btn-danger">Delete User</button>
+                <button type="submit" class="btn btn-dark">Cancel</button>
+            </span>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>
