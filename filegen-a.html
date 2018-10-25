@@ -1,16 +1,16 @@
-<!-- REGISTER TAXPAYER -->
+<!-- REGISTRATION PAGE -->
 
 <!-- v0.1 - Template 9/7 -->
-<!-- v0.2 - Edited header and footer 9/21 -->
+<!-- v0.2 - Template 9/21 -->
+
 
 <html>
-
 <head>
-  <title>Landbank eTax Payment System | Registration</title>
+	<title>Landbank eTax System | File Generation</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- BOOTSTRAP -->
+	<!-- BOOTSTRAP -->
   <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
   <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -37,13 +37,11 @@
 });
     
   </script>
-
 </head>
-
 <body>
- 
+
   <div id="wrapper" class="animate">
-    <nav class="navbar header-top fixed-top navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-light bg-light">
       <span class="navbar-toggler-icon leftmenutrigger"></span>
       <a class="navbar-brand" href="#"> <img src="images/logo.png" alt="logo" height="50px"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
@@ -53,7 +51,7 @@
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav animate side-nav bg-light">
           <li class="nav-item">
-            <a class="nav-link navbar-nav active" href="uregistration.html">Registration
+            <a class="nav-link navbar-nav active" href="#">File Generation
             </a>
           </li>
           <li class="nav-item">
@@ -75,11 +73,23 @@
       </div>
     </nav>
     <div class="container-fluid">
-          <div class="card">
+       <div class="card">
               <nav class="navbar navbar-expand-sm bg-light">
                   <ul class="navbar-nav">
                     <li class="nav-item">
-                      <a class="nav-link navbar-nav active" href="#">Edit Existing Taxpayer Profile</a>
+                      <a class="nav-link navbar-nav" href="#">Create Payment Reference File</a>
+                    </li>
+                     <li class="nav-item">
+                      <a class="nav-link navbar-nav" href="#">Upload CASA Account File</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link navbar-nav" href="#">Create Payment Confirmation File</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link navbar-nav active" href="#">Create Payment Acknowledgement File</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link navbar-nav" href="#">Compare Acknowledgement and Confirmation File</a>
                     </li>
                   </ul>
               </nav>
@@ -88,52 +98,13 @@
         <div class="col">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Edit Existing Taxpayer Profile</h5>
-              <form action="#">
+              <h5 class="card-title">Create Payment Acknowledgement File</h5>
+              <form action="/action_page.php">
                 <div class="form-group">
-                  <label for="taxpayer">Taxpayer Name:</label>
-                    <input type="text" placeholder="Enter Taxpayer Name"" class="form-control" id="tn" >
+                  <div>
+                    <button type="submit" class="btn btn-lb">Create ACK.txt File</button>
+                  </div>
                 </div>
-                <div class="form-group">
-                  <label for="tin">TIN:</label>
-                    <input type="tel" pattern="^\d{4}-\d{4}-\d{4}$" placeholder="Enter TIN" class="form-control" id="tin">
-                </div>
-                <div class="form-group">
-                <label for="tp">TP Branch Code:</label>
-                    <input type="number" placeholder="Enter TP Branch Code" class="form-control" id="tp">
-                </div>
-                <div class="form-group">
-                <label for="address">Address:</label>
-                    <input type="text" placeholder="Enter Taxpayer Name" class="form-control" id="add">
-                </div>
-                <div class="form-group">
-                <label for="phone">Phone Number:</label>
-                    <input type="tel" pattern="^\d{3}-\d{4}$" placeholder="Enter Phone Number" class="form-control" id="phone">
-                </div>
-                <div class="form-group">
-                <label for="fax">Fax Number:</label>
-                    <input type="tel" pattern="^\d{3}-\d{4}$" placeholder="Enter Fax Number" class="form-control" id="fax">
-                </div>
-                <div class="form-group">
-                <label for="contact">Contact Person:</label>
-                    <input type="text" placeholder="Enter Taxpayer Name" class="form-control" id="contact">
-                </div>
-                <div class="form-group">
-                <label for="email">Email Address:</label>
-                    <input type="email" placeholder="Enter Email Address" class="form-control" id="email">
-                </div>
-                <div class="form-group">
-                <label for="mobile">Mobile Number:</label>
-                    <input type="tel" pattern="^\d{4}-\d{3}-\d{4}$" placeholder="Enter Mobile Number" class="form-control" id="mobile">
-                </div>
-                <div class="form-group">
-                <label for="enroll">Enrollment Date:</label>
-                    <input type="password" class="form-control" id="enroll" disabled readonly>
-                </div>
-            <span>
-                <button type="submit" class="btn btn-lb">Apply Changes</button>
-                <button type="submit" class="btn btn-lb">Cancel</button>
-            </span>
             </form>
             </div>
           </div>
@@ -141,7 +112,6 @@
       </div>
     </div>
   </div>
-
 
 </body>
 </html>

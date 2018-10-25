@@ -67,6 +67,22 @@ function checkOption(obj) {
             selectElement.selectedIndex = null;
         }
 
+var largenonlarge = ['-- SELECT ONE --','Large','Non-Large'];
+var useridacc = ['-- SELECT ONE --','User ID','Accounts'];
+function checkOption2(obj) {
+            var list1 = document.getElementById("list1");
+            var list2 = document.getElementById("list2");
+            if(list1 == "Authorized Users/Accounts"){
+                document.getElementById("list2").disabled=false;
+            }else{
+                document.getElementById("list2").disabled=true;
+            }
+            
+            var selectElement = document.getElementById("list2");
+            selectElement.selectedIndex = null;
+
+        }
+
     $( document ).ready(function() {
      $('.leftmenutrigger').on('click', function(e) {
      $('.side-nav').toggleClass("open");
@@ -145,15 +161,21 @@ function checkOption(obj) {
                 </div>
                   <h5>Type of Report:</h5>
                  <div class="form-group">
-                  <label class="control control-radio"><input style="display: inline-block !important;"  type="radio" name="radiogrp" value="date" onclick="setOptions('enroll')"> Enrollment<span class="control_indicator"></span></label>
+                  <label class="control control-radio" style="padding-right: 2.5% !important;"><input style="display: inline-block !important;"  type="radio" name="radiogrp" value="date" onclick="setOptions('enroll')"> Enrollment<span class="control_indicator"></span></label>
+                   <label class="control control-radio" style="padding-right: 2.5% !important;"><input style="display: inline-block !important;"  type="radio" name="radiogrp" value="date" onclick="setOptions('trans')"> Transactions<span class="control_indicator"></span></label>
+                   <label class="control control-radio" style="padding-right: 2.5% !important;"><input style="display: inline-block !important;"  type="radio" name="radiogrp" value="date" onclick="setOptions('acct')"> Accounts<span class="control_indicator"></span></label>
                 </div>
-                <div class="form-group">
-                  <label class="control control-radio"><input style="display: inline-block !important;"  type="radio" name="radiogrp" value="date" onclick="setOptions('enroll')"> Transactions<span class="control_indicator"></span></label>
+               <!--  <div class="form-group">
+                  <label class="control control-radio"><input style="display: inline-block !important;"  type="radio" name="radiogrp" value="date" onclick="setOptions('trans')"> Transactions<span class="control_indicator"></span></label>
                 </div>
                 <div class="form-group">
                   <label class="control control-radio"><input style="display: inline-block !important;"  type="radio" name="radiogrp" value="date" onclick="setOptions('acct')"> Accounts<span class="control_indicator"></span></label>
-                </div>
-                  <select name="list1" id="list1" class="col-sm-12 form-control">
+                </div> -->
+
+                  <select name="list1" id="list1" class="col-sm-6 form-control" onChange="checkOption2(this)">
+                      <option selected="selected" disabled>-- SELECT ONE --</option>
+                    </select>
+                     <select name="list2" id="list2" class="col-sm-6 form-control">
                       <option selected="selected" disabled>-- SELECT ONE --</option>
                     </select>
                     <br>
@@ -170,11 +192,25 @@ function checkOption(obj) {
                 </div>
                 <div class="form-group">
                 <label for="pwd">TIN:</label>
-                    <input type="number" class="form-control" id="pwd">
+                    <input type="number" class="form-control" id="tin">
                 </div>
                 <div class="form-group">
                 <label for="pwd">Reference Number:</label>
-                    <input type="number" class="form-control" id="pwd">
+                    <input type="number" class="form-control" id="ref">
+                </div>
+
+                <hr>
+                 <h5>Type of File:</h5>
+                <div class="form-group">
+                  <label class="control control-radio" style="padding-right: 2.5% !important;"><input style="display: inline-block !important;"  type="radio" name="radiogrp" value="pdf"> PDF<span class="control_indicator"></span></label>
+                   <label class="control control-radio" style="padding-right: 2.5% !important;"><input style="display: inline-block !important;"  type="radio" name="radiogrp" value="csv"> CSV<span class="control_indicator"></span></label>
+                   <label class="control control-radio" style="padding-right: 2.5% !important;"><input style="display: inline-block !important;"  type="radio" name="radiogrp" value="txt"> TXT<span class="control_indicator"></span></label>
+               <!--  </div>
+                <div class="form-group">
+                  <label class="control control-radio"><input style="display: inline-block !important;"  type="radio" name="radiogrp" value="csv"> CSV<span class="control_indicator"></span></label>
+                </div>
+                <div class="form-group">
+                  <label class="control control-radio"><input style="display: inline-block !important;"  type="radio" name="radiogrp" value="txt"> TXT<span class="control_indicator"></span></label> -->
                 </div>
             <span>
                 <button type="submit" class="btn btn-lb">View Reports</button>

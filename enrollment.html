@@ -1,16 +1,15 @@
-<!-- ENROLLMENT PAGE -->
+<html>
+<!-- ENROLLMENT LOGS -->
 
 <!-- v0.1 - Template 9/7 -->
 
-<html>
 <head>
   <title>Landbank eTax Payment System | View Enrollment Logs</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-	<!-- BOOTSTRAP -->
-  <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+  <!-- BOOTSTRAP -->
+   <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
   <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
@@ -22,7 +21,30 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="css/main 2.css">
-  <script>
+
+
+    <script type="text/javascript">
+    function disableInputAll() {
+      document.getElementById("enrollDate").disabled = true;
+      document.getElementById("enrollUserID").disabled = true;
+      document.getElementById("enrollActType").disabled = true;
+    }
+    function disableInputDate() {
+      document.getElementById("enrollDate").disabled = false;
+      document.getElementById("enrollUserID").disabled = true;
+      document.getElementById("enrollActType").disabled = true;
+    }
+    function disableInputUserID() {
+      document.getElementById("enrollDate").disabled = true;
+      document.getElementById("enrollUserID").disabled = false;
+      document.getElementById("enrollActType").disabled = true;
+    }
+    function disableInputActType() {
+      document.getElementById("enrollDate").disabled = true;
+      document.getElementById("enrollUserID").disabled = true;
+      document.getElementById("enrollActType").disabled = false;
+    }
+
     $( document ).ready(function() {
      $('.leftmenutrigger').on('click', function(e) {
      $('.side-nav').toggleClass("open");
@@ -34,67 +56,78 @@
     $('.side-nav').removeClass('open');
     });
 });
-    
-  </script>
-
+    </script>
 
 </head>
 <body>
-	
   <div id="wrapper" class="animate">
-    <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark bg-dark">
+    <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-light bg-light">
       <span class="navbar-toggler-icon leftmenutrigger"></span>
-      <a class="navbar-brand" href="#"> <img src="images/logo.png" alt="logo" height="30px"></a>
+      <a class="navbar-brand" href="#"> <img src="images/logo.png" alt="logo" height="50px"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav animate side-nav">
+        <ul class="navbar-nav animate side-nav bg-light">
           <li class="nav-item">
-            <a class="nav-link" href="#">Registration
+            <a class="nav-link navbar-nav" href="#">Registration
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Reports/Logs</a>
+            <a class="nav-link navbar-nav active" href="#">Account</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Account</a>
+            <a class="nav-link navbar-nav" href="#"></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"></a>
+            <a class="nav-link navbar-nav" href="#"></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"></a>
+            <a class="nav-link navbar-nav" href="#"></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Logout</a>
+            <a class="nav-link navbar-nav" href="#">Logout</a>
           </li>
         </ul>
       </div>
     </nav>
-    <div class="container-fluid">
+<div class="container-fluid">
+     <div class="card">
+              <nav class="navbar navbar-expand-sm bg-light">
+                  <ul class="navbar-nav">
+                    <li class="nav-item">
+                      <a class="nav-link navbar-nav active" href="#">View Enrollment Logs</a>
+                    </li>
+                  </ul>
+              </nav>
+        </div>
       <div class="row">
         <div class="col">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Change Password</h5>
-              <form action="/action_page.php">
+              <h5 class="card-title">View Enrollment Logs</h5>
+              <form action="#">
                 <div class="form-group">
-                  <label for="pwd">Current Password:</label>
-                    <input type="password" class="form-control" id="pwd" >
+                  <label class="control control-radio"><input type="radio" name="radiogrp" value="all" onclick="disableInputAll()"> All<div class="control_indicator"></div></label>
                 </div>
                 <div class="form-group">
-                  <label for="pwd">New Password:</label>
-                    <input type="password" class="form-control" id="pwd">
+                  <label class="control control-radio"><input style="display: inline-block !important;"  type="radio" name="radiogrp" value="date" onclick="disableInputDate()"> Date: <span class="control_indicator"></span></label>
+          <input style="display: inline-block !important;" class="form-control" type="date" id="enrollDate" name="before">
                 </div>
                 <div class="form-group">
-                <label for="pwd">Re-enter Password:</label>
-                    <input type="password" class="form-control" id="pwd">
+                    <label class="control control-radio"><input  type="radio" name="radiogrp" value="ui" onclick="disableInputUserID()"> User ID: <div class="control_indicator"></div></label>
+          <input style="display: inline-block !important;" class="form-control" type="text" placeholder="Enter User ID" name="#"  id="enrollUserID" required>
+                </div>
+                <div class="form-group">
+                <label class="control control-radio"><input  type="radio" name="radiogrp" value="actt" onclick="disableInputActType()"> Activity Type: <div class="control_indicator"></div></label>
+          <select style="display: inline-block !important;" name="enrollActType" id="enrollActType" class="form-control">
+            <option selected="selected" disabled>-- SELECT ONE --</option>
+          </select>
                 </div>
             <span>
-                <button type="submit" class="btn btn-default">Change Password</button>
-                <button type="submit" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-lb">Search</button>
+                <button type="submit" class="btn btn-lb">Cancel</button>
             </span>
             </form>
             </div>
@@ -103,7 +136,6 @@
       </div>
     </div>
   </div>
-
 
 </body>
 </html>

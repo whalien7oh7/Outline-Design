@@ -1,181 +1,279 @@
-<!-- REPORTS -->
+<!-- ETPS -->
 
 <!-- v0.1 - Template 9/7 -->
+<!-- v0.2 - Edited header and footer 9/21 -->
 
 <html>
+
 <head>
-	<title>Landbank eTax Payment System | View Reports</title>
+  <title>Landbank eTax Payment System | Create ETPS Reports</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="css/styles.css">
 
-	<!-- BOOTSTRAP -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+  <!-- BOOTSTRAP -->
+  <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+  <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+  <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+  <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+  <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+  <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/main 2.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <script>
-    
-$("input[type='radio'][name='auth']").change(function(){
-    
-  var selected = $("input[type='radio'][name='auth']:checked").val();
-    
-    if(selected == "enroll") var opts = [
-        {name:"Taxpayers", val:""},
-        {name:"Authorized Users/Accounts", val:""},
-        {name:"Account Numbers", val:""},
-        {name:"Application Users", val:""}
-    ];
 
-    else if(selected == "trans") var opts = [
-        {name:"Confirmed Payment Instructions",val:""},
-        {name:"Acknowledged Payment Instructions",val:""},
-        {name:"Rejected Payment Instructions",val:""},
-        {name:"Scheduled Payment Instructions",val:""}
-      ];
-    
-    else var opts = [
-        {name:"Unlocked Front Office Users", val:""},
-    ];
-    
-    $("#authreport").empty();
-    
-    $.each(opts, function(k,v){
-        
-      $("#authreport").append("<option value='"+v.val+"'>"+v.name+"</option>");
-        
+var choicesenroll = ['-- SELECT ONE --','Taxpayers','Authorized Users/Accounts','Account Numbers','Application Users'];
+var choicestrans = ['-- SELECT ONE --','Confirmed Payment Instructions','Acknowledged Payment Instructions','Rejected Payment Instructions','Scheduled Payment Instructions'];
+var choicesacct = ['-- SELECT ONE --','Unlocked Front Office Users'];
+
+function setOptions(matchWith){
+  var choices = [];
+  var sel = document.getElementById('list1');
+  var tmp = '';
+  sel.options.length = 0;
+  switch (matchWith) {
+    case 'enroll' : choices = choicesenroll.slice(0); break;
+    case 'trans' : choices = choicestrans.slice(0); break;
+    case 'acct' : choices = choicesacct.slice(0); break;
+  }
+  for (i=0; i<choices.length; i++) {  
+
+    tmp = choices[i];
+    sel.options[sel.options.length] = new Option(tmp,tmp,false,false);
+  }
+  var selectElement = document.getElementById("sel");
+  selectElement.selectedIndex = 0;
+  document.getElementById("list1").disabled = false;
+} 
+
+// DROPDOWN
+function checkOption(obj) {
+            var before = document.getElementById("before");
+            before.disabled = obj.value != "";
+            var after = document.getElementById("after");
+            after.disabled = obj.value != "";
+            var ref = document.getElementById("ref");
+            ref.disabled = obj.value != "";
+            var ele = document.getElementsByName("radiogrp");
+            if(obj.value != "Transactions"){
+              for(var i=0;i<ele.length;i++)
+                ele[i].checked = false;
+            }
+            document.getElementById("list1").disabled = true;
+            var selectElement = document.getElementById("list1");
+            selectElement.selectedIndex = null;
+        }
+
+var largenonlarge = ['-- SELECT ONE --','Large','Non-Large'];
+var useridacc = ['-- SELECT ONE --','User ID','Accounts'];
+function checkOption2(obj) {
+            var list1 = document.getElementById("list1");
+            var list2 = document.getElementById("list2");
+            if(list1 == "Authorized Users/Accounts"){
+                document.getElementById("list2").disabled=false;
+            }else{
+                document.getElementById("list2").disabled=true;
+            }
+            
+            var selectElement = document.getElementById("list2");
+            selectElement.selectedIndex = null;
+
+        }
+
+    $( document ).ready(function() {
+     $('.leftmenutrigger').on('click', function(e) {
+     $('.side-nav').toggleClass("open");
+     //e.preventDefault();
+     e.stopPropagation();
+    return false;
+    });
+     $('*:not(.leftmenutrigger)').on('click', function() {
+    $('.side-nav').removeClass('open');
     });
 });
-
-  </script> 
+    
+  </script>
 
 </head>
+
 <body>
-  <header class="header_reg">
-    <div>
-      <img src="img/header.jpg" alt="logo" style="max-width: 1650px !important; width: 100% !important; height: 90% !important;">
-    </div>
-  </header>
-  <br><br><br><br>
+ 
+  <div id="wrapper" class="animate">
+    <nav class="navbar header-top fixed-top navbar-expand-lg navbar-light bg-light">
+      <span class="navbar-toggler-icon leftmenutrigger"></span>
+      <a class="navbar-brand" href="#"> <img src="images/logo.png" alt="logo" height="50px"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav animate side-nav bg-light">
+          <li class="nav-item">
+            <a class="nav-link navbar-nav" href="#">Registration
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navbar-nav active" href="#">Reports/Logs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navbar-nav" href="#">Account</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navbar-nav" href="#"></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navbar-nav" href="#"></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navbar-nav" href="#">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container-fluid">
+       <div class="card">
+              <nav class="navbar navbar-expand-sm bg-light">
+                  <ul class="navbar-nav">
+                    <li class="nav-item">
+                      <a class="nav-link navbar-nav active" href="#">Create ETPS Reports</a>
+                    </li>
+                  </ul>
+              </nav>
+        </div>
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">ETPS Reports</h4>
+              <form action="#">
+                <div class="form-group">
+                  <h5>Collection Time:</h5>
+                  <span>
+                    <input type="date" class=" form-control" id="collectiontime" style="display: inline-block !important; max-width: 50% !important;" class="col-sm-6">
+                    <button type="button" class="btn btn-lb" style="display: inline-block !important;">Download file from FTP</button>
+                  </span>
+                </div>
+                <hr>
+                  <div class="form-group">
+                  <h5>Subject:</h5>
+                    <input type="text" class=" form-control" id="subject" style="display: inline-block !important;" class="col-sm-12">
+                  </div>
+                  <div class="form-group">
+                    <span>
+                    <textarea class="form-control" rows="15" cols="50" readonly>Test Input Area
+                    </textarea>
+                    <br>
+                    <span style="float:left !important;">
+                    <button class="btn btn-lb"><i class="fa fa-plus"></i></button>
+                    <button class="btn btn-danger"><i class="fa fa-close"></i></button>
+                    </span>
+                    <span style="float:right !important;">
+                    <button type="button" class="btn btn-lb" style="display: inline-block !important;" data-toggle="modal" data-target="#myModal">Generate Daily Reports</button>
+                    <button type="button" class="btn btn-lb" style="display: inline-block !important;" data-toggle="modal" data-target="#myModal2">Generate CRDC File</button>
+                  </span>
+                  </span>
+
+  <!-- MODAL ONE -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
   
-
-	<div class="container">
-			<div class="topnav">
-  				<a href="uregistration.html">Registration</a>
-  				<a class="active" href="#">Reports/Logs</a>
-  				<a href="index.html">Account</a>
-  				<a style="float: right !important;" href="logout.html">Logout</a>
-			</div>
-	</div>
-
-
-	<br>
-	<div class="container">
-		<div class="row">
-
-		<div class="col-sm-3 vmenu">
-			<label>Reports/Logs</label>
-  			<a href="#reports.html">View Reports</a>
-  			<a href="transaction.html">View Transaction Logs</a>
-        <a href="#" class="active">Create ETPS Reports</a>
-
-		</div>
-
-		<div class="col-sm-9 div_reg">
-  			<span class="span_reg">
-    			Create ETPS Reports
-  			</span>
-  			<br>
-
+      <div class="modal-content">
+        <div class="modal-]header" style="background-color: #90ee90 !important;">
+          <h3 class="modal-title">ETPS Reports</h3>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
           <div class="form-group">
-            <span>Collection Date: <input class="col-sm-3 form-control" style="width: 50% !important; margin-right: 5% !important;" type="date" name="before"><button style="width: 50% !important; margin-right: 15% !important;"class="btn btn-success col-sm-3" type="button" >Download file from FTP</button></span>
-          </div>
+                  <h4>Date:</h4>
+                  <span>
+                    <span><h5>From</h5>
+                    <input type="date" class=" form-control" id="etpsfrom" style="display: inline-block !important; max-width: 50% !important;" class="col-sm-6"></span>
+                    <span><h5>To</h5>
+                    <input type="date" class=" form-control" id="etpsto" style="display: inline-block !important; max-width: 50% !important;" class="col-sm-6"></span>
+                  </span>
+                </div>
+                <hr>
+                <div class="form-group">
+                  <h4>Reports:</h4>
+                  <div style="padding-left: 5% !important;">
+                  <p><input type="checkbox" class="form-check-input" name="accptl" id="accptl" value=""> ACCPTL and ACCPTNL</p>
+                  <p><input type="checkbox" class="form-check-input" name="accptl" id="accptl" value=""> CRDCL and CRDCNL</p>
+                  <p><input type="checkbox" class="form-check-input" name="accptl" id="accptl" value=""> SCHEDL and SCHEDNL</p>
+                  <p><input type="checkbox" class="form-check-input" name="accptl" id="accptl" value=""> ETPBRL and ETPBRNL</p>
+                  </div>
+                </div>
+                <hr>
+                <center><button type="submit" class="btn btn-lb" style="display: inline-block !important;">Generate Report</button></center>
+        </div>
+     
+    </div>
+  </div>
+</div>
+  <!-- END OF MODAL -->
 
-          <hr>
 
-  			<form class="form-horizontal">
-  				<div class="form-group">
-            <span>Subject: <input class="col-sm-6 form-control readonly" style="width: 100% !important; margin-right: 5% !important;" type="text" name="subject"></span>
+  <!-- MODAL TWO -->
+ <div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+  
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #90ee90 !important;">
+          <h3 class="modal-title">CRDC csv Converter</h3>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+                  <span>
+                    <span><h5>Collection Date:</h5>
+                    <input type="date" class=" form-control" id="etpscol" style="display: inline-block !important; max-width: 50% !important;" class="col-sm-6"></span>
+                    <span><h5>Remittance Date:</h5>
+                    <input type="date" class=" form-control" id="etpsrem" style="display: inline-block !important; max-width: 50% !important;" class="col-sm-6"></span>
+                  </span>
+                </div>
+                <hr>
+                <center><button type="submit" class="btn btn-lb" style="display: inline-block !important;">Generate Report</button>
+                  <button type="submit" class="btn btn-danger" style="display: inline-block !important;">Cancel</button>
+                </center>
+        </div>
+     
+    </div>
+  </div>
+</div>
+ <!-- END OF MODAL TWO -->
 
-            <br>
-            <span>Period Time: from <input class="col-sm-3 form-control" style="width: 25% !important;"></span>
-    			</div>
-
-          <div class="radio form-group">
-            <label class="radio-inline">
-              <input type="radio" name="auth"  id="auth" value="enroll">Enrollment
-            </label>
-            <label class="radio-inline">
-              <input type="radio" name="auth"  id="auth" value="trans">Transactions
-            </label>
-            <label class="radio-inline">
-              <input type="radio" name="auth"  id="auth" value="acct">Accounts
-            </label>
-          </div>
-
-          <select class="dropdown" name="authreport" id="authreport">
-          </select>
-
-       <!--    <div class="form-group" name="auth0" id="auth0" style='display:none;'>
-            <span>Enrollment:
-            <select style="display: inline !important;" class="col-sm-4 form-control" name="auth1" onchange='authuseracct(this.value);'> 
-              <option value="red">Taxpayers</option>
-              <option value="useracct">Authorized Users/Accounts</option>
-              <option value="others">Account Numbers</option>
-              <option value="others">Application Users</option>
-            </select>
-          </span>
-        </div> -->
-
-          <!--   <input class="col-sm-3 form-control" type="text" name="auth" id="auth" style='display:none;'/> -->
-
-           <!--  <div name="auth1" id="auth1" style='display:none;'>
-            <label class="checkbox-inline">
-              <input type="checkbox" value="useracct">by User ID
-             </label>
-            <label class="checkbox-inline">
-              <input type="checkbox" value="useracct">by Account
-            </label>
-          </div> -->
-
-          <div class="form-group" name="auth0" id="auth0" style='display:none;'>
-            <span value="trans">Transactions:
-            <select style="display: inline !important;" class="col-sm-4 form-control"> 
-              <option value="red">Confirmed Payment Instructions</option>
-              <option value="useracct">Acknowledged Payment Instructions</option>
-              <option value="others">Rejected Payment Instructions</option>
-              <option value="others">Scheduled Payment Instructions</option>
-            </select>
-          </span>
+                    <br>
+                <hr>
+                 <div class="form-group">
+                  <h5>Agency:</h5>
+                  <span>
+                    <input type="text" class=" form-control" id="collectiontime" style="display: inline-block !important; max-width: 92% !important;" class="col-sm-12">
+                    <button type="submit" class="btn btn-lb" style="display: inline-block !important;">Send Email</button>
+                  </span>
+                </div>
+                 <div class="card">
+              <nav class="navbar navbar-expand-sm bg-light">
+                <div>Test Input Server</div>
+              </nav>
         </div>
 
-            <span value="acct" class="form-group" name="auth0" id="auth0" style='display:none;'>Accounts:  
-            <label class="checkbox-inline">
-              <input type="checkbox" value=""> Unlocked Front Office Users
-             </label>
-           </span>
-
-            <input class="col-sm-3 form-control" type="text" name="auth" id="auth" style='display:none;'/>
-
-            <div name="auth" id="auth" style='display:none;'>
-            <label class="checkbox-inline">
-              <input type="checkbox" value="useracct">by User ID
-             </label>
-            <label class="checkbox-inline">
-              <input type="checkbox" value="useracct">by Account
-            </label>
+            <span>
+                <button type="submit" class="btn btn-lb">View ETPS </button>
+                <button type="submit" class="btn btn-lb">Cancel</button>
+            </span>
+            </form>
+            </div>
           </div>
-    		</form>
-
-		</div>
-	</div>
-</div>
-
-<!-- <div class="main-container">
-  <footer>
-    <div>
-      <img src="img/footer.jpg" alt="footer" class="footer-logo">
+        </div>
+      </div>
     </div>
-  </footer>
-  </div> -->
+  </div>
+
 
 </body>
 </html>
